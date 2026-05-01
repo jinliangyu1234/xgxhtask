@@ -46,7 +46,7 @@
 4. 重启服务器
 
 ### 支持版本
-- Minecraft 1.21 - 1.21.4
+- Minecraft 1.21 - 26.1.2
 - Paper / Spigot 服务端
 - Java 21+
 
