@@ -1,0 +1,1556 @@
+# xgxhtask 每日任务插件配置文件
+# 作者: 雪糕小豪
+
+# 允许使用任务的世界列表
+allowed-worlds:
+  - "world"
+  - "world_nether"
+  - "world_the_end"
+
+# 自动保存设置
+auto-save:
+  # 是否开启自动保存
+  enabled: true
+  # 自动保存间隔（分钟）
+  interval-minutes: 5
+
+# 任务重置设置
+task-reset:
+  # 是否开启定时重置
+  enabled: false
+  # 重置间隔（分钟）
+  interval-minutes: 1440
+  # 重置时间说明: 1440分钟 = 24小时 = 1天
+
+# 每日任务设置
+daily-tasks:
+  # 每日显示任务数量
+  count: 20
+  # 是否每日随机任务
+  random-enabled: true
+
+# 提醒设置
+notifications:
+  # 玩家加入时是否提醒任务状态
+  join-reminder: true
+  # 任务完成时是否自动领取奖励
+  auto-claim: true
+  # 任务完成时是否发送提醒
+  task-complete-notify: true
+  # 任务完成时是否播放音效
+  task-complete-sound: true
+
+# 自定义提示语
+messages:
+  # 玩家加入提醒
+  join:
+    title: ""
+    subtitle: "§6§l     §e§l每日任务状态 §6§l"
+    footer: ""
+    total-tasks: "§7今日共有 §e%total% §7个任务"
+    completed: "§7已完成: §a%completed% §7个"
+    claimed: "§7已领取: §e%claimed% §7个"
+    remaining: "§e§l还有 §c%remaining% §e§l个任务等你完成！"
+    unclaimed: "§a§l有 §e%unclaimed% §a§l个任务奖励待领取！"
+    help: "§7输入 §e/task 查看 §7查看详情"
+    menu-help: "§7输入 §e/task 菜单 §7打开任务界面"
+    separator: ""
+
+  # 任务完成提醒
+  task-complete:
+    header: ""
+    message: "§a§l✦ 任务完成！§e%task%"
+    description: "§7%description%"
+    reward: "§7奖励: §6%reward% 金币"
+    footer: ""
+    auto-claim: "§a§l✓ 奖励已自动领取！§6+%reward% 金币"
+
+  # 任务重置提醒
+  task-reset:
+    message: "§a§l✦ 每日任务已重置！新的任务等待你完成！"
+
+  # 任务查看
+  task-view:
+    title: "§6§l===== 每日任务进度 ====="
+    format: "%status% %name% §7- §f%progress%/%amount% §7(§a%reward%金币§7)"
+    status-claimed: "§a[已领取]"
+    status-completed: "§e[可领取]"
+    status-progress: "§c[进行中]"
+    footer: "§6§l========================"
+
+  # 错误提示
+  errors:
+    no-permission: "§c你没有权限使用此命令！"
+    task-not-exist: "§c任务不存在！"
+    task-not-completed: "§c任务尚未完成！"
+    reward-already-claimed: "§c奖励已经领取过了！"
+    claim-failed: "§c领取奖励失败！"
+    player-only: "§c只有玩家可以使用此命令！"
+
+# 任务池配置
+# type: 任务类型 (MINE挖矿, KILL击杀, FISH钓鱼, FARM农业, WALK行走)
+# material: 目标材质/怪物类型
+# amount: 需要完成的数量
+# reward: 完成奖励金币
+
+tasks:
+  # ==================== 挖矿任务 ====================
+  # 石头类
+  mine_stone:
+    name: "挖掘石头"
+    description: "挖掘64个石头"
+    type: "MINE"
+    material: "STONE"
+    amount: 64
+    reward: 100.0
+
+  mine_stone_2:
+    name: "石头矿工"
+    description: "挖掘128个石头"
+    type: "MINE"
+    material: "STONE"
+    amount: 128
+    reward: 150.0
+
+  mine_stone_3:
+    name: "石头大师"
+    description: "挖掘256个石头"
+    type: "MINE"
+    material: "STONE"
+    amount: 256
+    reward: 300.0
+
+  # 煤矿类
+  mine_coal:
+    name: "挖掘煤矿"
+    description: "挖掘32个煤矿"
+    type: "MINE"
+    material: "COAL_ORE"
+    amount: 32
+    reward: 80.0
+
+  mine_coal_2:
+    name: "煤矿专家"
+    description: "挖掘64个煤矿"
+    type: "MINE"
+    material: "COAL_ORE"
+    amount: 64
+    reward: 140.0
+
+  mine_coal_3:
+    name: "煤矿大师"
+    description: "挖掘128个煤矿"
+    type: "MINE"
+    material: "COAL_ORE"
+    amount: 128
+    reward: 240.0
+
+  # 铁矿类
+  mine_iron:
+    name: "挖掘铁矿"
+    description: "挖掘16个铁矿石"
+    type: "MINE"
+    material: "IRON_ORE"
+    amount: 16
+    reward: 160.0
+
+  mine_iron_2:
+    name: "铁矿专家"
+    description: "挖掘32个铁矿石"
+    type: "MINE"
+    material: "IRON_ORE"
+    amount: 32
+    reward: 280.0
+
+  mine_iron_3:
+    name: "铁矿大师"
+    description: "挖掘64个铁矿石"
+    type: "MINE"
+    material: "IRON_ORE"
+    amount: 64
+    reward: 500.0
+
+  # 金矿类
+  mine_gold:
+    name: "挖掘金矿"
+    description: "挖掘10个金矿石"
+    type: "MINE"
+    material: "GOLD_ORE"
+    amount: 10
+    reward: 200.0
+
+  mine_gold_2:
+    name: "金矿专家"
+    description: "挖掘20个金矿石"
+    type: "MINE"
+    material: "GOLD_ORE"
+    amount: 20
+    reward: 360.0
+
+  mine_gold_3:
+    name: "金矿大师"
+    description: "挖掘40个金矿石"
+    type: "MINE"
+    material: "GOLD_ORE"
+    amount: 40
+    reward: 640.0
+
+  # 钻石类
+  mine_diamond:
+    name: "挖掘钻石"
+    description: "挖掘5个钻石矿"
+    type: "MINE"
+    material: "DIAMOND_ORE"
+    amount: 5
+    reward: 400.0
+
+  mine_diamond_2:
+    name: "钻石专家"
+    description: "挖掘10个钻石矿"
+    type: "MINE"
+    material: "DIAMOND_ORE"
+    amount: 10
+    reward: 700.0
+
+  mine_diamond_3:
+    name: "钻石大师"
+    description: "挖掘20个钻石矿"
+    type: "MINE"
+    material: "DIAMOND_ORE"
+    amount: 20
+    reward: 1200.0
+
+  # 绿宝石类
+  mine_emerald:
+    name: "挖掘绿宝石"
+    description: "挖掘3个绿宝石矿"
+    type: "MINE"
+    material: "EMERALD_ORE"
+    amount: 3
+    reward: 300.0
+
+  mine_emerald_2:
+    name: "绿宝石专家"
+    description: "挖掘8个绿宝石矿"
+    type: "MINE"
+    material: "EMERALD_ORE"
+    amount: 8
+    reward: 600.0
+
+  mine_emerald_3:
+    name: "绿宝石大师"
+    description: "挖掘15个绿宝石矿"
+    type: "MINE"
+    material: "EMERALD_ORE"
+    amount: 15
+    reward: 1000.0
+
+  # 青金石类
+  mine_lapis:
+    name: "挖掘青金石"
+    description: "挖掘20个青金石矿"
+    type: "MINE"
+    material: "LAPIS_ORE"
+    amount: 20
+    reward: 120.0
+
+  mine_lapis_2:
+    name: "青金石专家"
+    description: "挖掘40个青金石矿"
+    type: "MINE"
+    material: "LAPIS_ORE"
+    amount: 40
+    reward: 200.0
+
+  mine_lapis_3:
+    name: "青金石大师"
+    description: "挖掘80个青金石矿"
+    type: "MINE"
+    material: "LAPIS_ORE"
+    amount: 80
+    reward: 360.0
+
+  # 红石类
+  mine_redstone:
+    name: "挖掘红石"
+    description: "挖掘20个红石矿"
+    type: "MINE"
+    material: "REDSTONE_ORE"
+    amount: 20
+    reward: 140.0
+
+  mine_redstone_2:
+    name: "红石专家"
+    description: "挖掘40个红石矿"
+    type: "MINE"
+    material: "REDSTONE_ORE"
+    amount: 40
+    reward: 240.0
+
+  mine_redstone_3:
+    name: "红石大师"
+    description: "挖掘80个红石矿"
+    type: "MINE"
+    material: "REDSTONE_ORE"
+    amount: 80
+    reward: 400.0
+
+  # 铜矿类
+  mine_copper:
+    name: "挖掘铜矿"
+    description: "挖掘32个铜矿"
+    type: "MINE"
+    material: "COPPER_ORE"
+    amount: 32
+    reward: 100.0
+
+  mine_copper_2:
+    name: "铜矿专家"
+    description: "挖掘64个铜矿"
+    type: "MINE"
+    material: "COPPER_ORE"
+    amount: 64
+    reward: 180.0
+
+  mine_copper_3:
+    name: "铜矿大师"
+    description: "挖掘128个铜矿"
+    type: "MINE"
+    material: "COPPER_ORE"
+    amount: 128
+    reward: 320.0
+
+  # ==================== 击杀任务 ====================
+  # 僵尸类
+  kill_zombie:
+    name: "击杀僵尸"
+    description: "击杀20只僵尸"
+    type: "KILL"
+    material: "ZOMBIE"
+    amount: 20
+    reward: 120.0
+
+  kill_zombie_2:
+    name: "僵尸猎人"
+    description: "击杀50只僵尸"
+    type: "KILL"
+    material: "ZOMBIE"
+    amount: 50
+    reward: 240.0
+
+  kill_zombie_3:
+    name: "僵尸屠夫"
+    description: "击杀100只僵尸"
+    type: "KILL"
+    material: "ZOMBIE"
+    amount: 100
+    reward: 440.0
+
+  # 骷髅类
+  kill_skeleton:
+    name: "击杀骷髅"
+    description: "击杀20只骷髅"
+    type: "KILL"
+    material: "SKELETON"
+    amount: 20
+    reward: 140.0
+
+  kill_skeleton_2:
+    name: "骷髅猎人"
+    description: "击杀50只骷髅"
+    type: "KILL"
+    material: "SKELETON"
+    amount: 50
+    reward: 280.0
+
+  kill_skeleton_3:
+    name: "骷髅屠夫"
+    description: "击杀100只骷髅"
+    type: "KILL"
+    material: "SKELETON"
+    amount: 100
+    reward: 500.0
+
+  # 蜘蛛类
+  kill_spider:
+    name: "击杀蜘蛛"
+    description: "击杀15只蜘蛛"
+    type: "KILL"
+    material: "SPIDER"
+    amount: 15
+    reward: 110.0
+
+  kill_spider_2:
+    name: "蜘蛛猎人"
+    description: "击杀40只蜘蛛"
+    type: "KILL"
+    material: "SPIDER"
+    amount: 40
+    reward: 220.0
+
+  kill_spider_3:
+    name: "蜘蛛屠夫"
+    description: "击杀80只蜘蛛"
+    type: "KILL"
+    material: "SPIDER"
+    amount: 80
+    reward: 400.0
+
+  # 苦力怕类
+  kill_creeper:
+    name: "击杀苦力怕"
+    description: "击杀10只苦力怕"
+    type: "KILL"
+    material: "CREEPER"
+    amount: 10
+    reward: 180.0
+
+  kill_creeper_2:
+    name: "苦力怕猎人"
+    description: "击杀30只苦力怕"
+    type: "KILL"
+    material: "CREEPER"
+    amount: 30
+    reward: 360.0
+
+  kill_creeper_3:
+    name: "苦力怕屠夫"
+    description: "击杀60只苦力怕"
+    type: "KILL"
+    material: "CREEPER"
+    amount: 60
+    reward: 640.0
+
+  # 末影人类
+  kill_enderman:
+    name: "击杀末影人"
+    description: "击杀5只末影人"
+    type: "KILL"
+    material: "ENDERMAN"
+    amount: 5
+    reward: 240.0
+
+  kill_enderman_2:
+    name: "末影人猎人"
+    description: "击杀15只末影人"
+    type: "KILL"
+    material: "ENDERMAN"
+    amount: 15
+    reward: 500.0
+
+  kill_enderman_3:
+    name: "末影人屠夫"
+    description: "击杀30只末影人"
+    type: "KILL"
+    material: "ENDERMAN"
+    amount: 30
+    reward: 900.0
+
+  # 烈焰人类
+  kill_blaze:
+    name: "击杀烈焰人"
+    description: "击杀10只烈焰人"
+    type: "KILL"
+    material: "BLAZE"
+    amount: 10
+    reward: 300.0
+
+  kill_blaze_2:
+    name: "烈焰人猎人"
+    description: "击杀25只烈焰人"
+    type: "KILL"
+    material: "BLAZE"
+    amount: 25
+    reward: 600.0
+
+  kill_blaze_3:
+    name: "烈焰人屠夫"
+    description: "击杀50只烈焰人"
+    type: "KILL"
+    material: "BLAZE"
+    amount: 50
+    reward: 1100.0
+
+  # 凋灵骷髅类
+  kill_wither_skeleton:
+    name: "击杀凋灵骷髅"
+    description: "击杀5只凋灵骷髅"
+    type: "KILL"
+    material: "WITHER_SKELETON"
+    amount: 5
+    reward: 400.0
+
+  kill_wither_skeleton_2:
+    name: "凋灵骷髅猎人"
+    description: "击杀15只凋灵骷髅"
+    type: "KILL"
+    material: "WITHER_SKELETON"
+    amount: 15
+    reward: 800.0
+
+  kill_wither_skeleton_3:
+    name: "凋灵骷髅屠夫"
+    description: "击杀30只凋灵骷髅"
+    type: "KILL"
+    material: "WITHER_SKELETON"
+    amount: 30
+    reward: 1400.0
+
+  # 女巫类
+  kill_witch:
+    name: "击杀女巫"
+    description: "击杀10只女巫"
+    type: "KILL"
+    material: "WITCH"
+    amount: 10
+    reward: 200.0
+
+  kill_witch_2:
+    name: "女巫猎人"
+    description: "击杀25只女巫"
+    type: "KILL"
+    material: "WITCH"
+    amount: 25
+    reward: 400.0
+
+  kill_witch_3:
+    name: "女巫屠夫"
+    description: "击杀50只女巫"
+    type: "KILL"
+    material: "WITCH"
+    amount: 50
+    reward: 700.0
+
+  # 溺尸类
+  kill_drowned:
+    name: "击杀溺尸"
+    description: "击杀20只溺尸"
+    type: "KILL"
+    material: "DROWNED"
+    amount: 20
+    reward: 160.0
+
+  kill_drowned_2:
+    name: "溺尸猎人"
+    description: "击杀50只溺尸"
+    type: "KILL"
+    material: "DROWNED"
+    amount: 50
+    reward: 320.0
+
+  kill_drowned_3:
+    name: "溺尸屠夫"
+    description: "击杀100只溺尸"
+    type: "KILL"
+    material: "DROWNED"
+    amount: 100
+    reward: 560.0
+
+  # 尸壳类
+  kill_husk:
+    name: "击杀尸壳"
+    description: "击杀20只尸壳"
+    type: "KILL"
+    material: "HUSK"
+    amount: 20
+    reward: 160.0
+
+  kill_husk_2:
+    name: "尸壳猎人"
+    description: "击杀50只尸壳"
+    type: "KILL"
+    material: "HUSK"
+    amount: 50
+    reward: 320.0
+
+  kill_husk_3:
+    name: "尸壳屠夫"
+    description: "击杀100只尸壳"
+    type: "KILL"
+    material: "HUSK"
+    amount: 100
+    reward: 560.0
+
+  # 流浪者类
+  kill_stray:
+    name: "击杀流浪者"
+    description: "击杀20只流浪者"
+    type: "KILL"
+    material: "STRAY"
+    amount: 20
+    reward: 160.0
+
+  kill_stray_2:
+    name: "流浪者猎人"
+    description: "击杀50只流浪者"
+    type: "KILL"
+    material: "STRAY"
+    amount: 50
+    reward: 320.0
+
+  kill_stray_3:
+    name: "流浪者屠夫"
+    description: "击杀100只流浪者"
+    type: "KILL"
+    material: "STRAY"
+    amount: 100
+    reward: 560.0
+
+  # 蠹虫类
+  kill_silverfish:
+    name: "击杀蠹虫"
+    description: "击杀30只蠹虫"
+    type: "KILL"
+    material: "SILVERFISH"
+    amount: 30
+    reward: 100.0
+
+  kill_silverfish_2:
+    name: "蠹虫猎人"
+    description: "击杀80只蠹虫"
+    type: "KILL"
+    material: "SILVERFISH"
+    amount: 80
+    reward: 200.0
+
+  kill_silverfish_3:
+    name: "蠹虫屠夫"
+    description: "击杀150只蠹虫"
+    type: "KILL"
+    material: "SILVERFISH"
+    amount: 150
+    reward: 360.0
+
+  # 末影螨类
+  kill_endermite:
+    name: "击杀末影螨"
+    description: "击杀20只末影螨"
+    type: "KILL"
+    material: "ENDERMITE"
+    amount: 20
+    reward: 120.0
+
+  kill_endermite_2:
+    name: "末影螨猎人"
+    description: "击杀50只末影螨"
+    type: "KILL"
+    material: "ENDERMITE"
+    amount: 50
+    reward: 240.0
+
+  kill_endermite_3:
+    name: "末影螨屠夫"
+    description: "击杀100只末影螨"
+    type: "KILL"
+    material: "ENDERMITE"
+    amount: 100
+    reward: 440.0
+
+  # 洞穴蜘蛛类
+  kill_cave_spider:
+    name: "击杀洞穴蜘蛛"
+    description: "击杀15只洞穴蜘蛛"
+    type: "KILL"
+    material: "CAVE_SPIDER"
+    amount: 15
+    reward: 140.0
+
+  kill_cave_spider_2:
+    name: "洞穴蜘蛛猎人"
+    description: "击杀40只洞穴蜘蛛"
+    type: "KILL"
+    material: "CAVE_SPIDER"
+    amount: 40
+    reward: 280.0
+
+  kill_cave_spider_3:
+    name: "洞穴蜘蛛屠夫"
+    description: "击杀80只洞穴蜘蛛"
+    type: "KILL"
+    material: "CAVE_SPIDER"
+    amount: 80
+    reward: 500.0
+
+  # 卫道士类
+  kill_vindicator:
+    name: "击杀卫道士"
+    description: "击杀10只卫道士"
+    type: "KILL"
+    material: "VINDICATOR"
+    amount: 10
+    reward: 240.0
+
+  kill_vindicator_2:
+    name: "卫道士猎人"
+    description: "击杀25只卫道士"
+    type: "KILL"
+    material: "VINDICATOR"
+    amount: 25
+    reward: 480.0
+
+  kill_vindicator_3:
+    name: "卫道士屠夫"
+    description: "击杀50只卫道士"
+    type: "KILL"
+    material: "VINDICATOR"
+    amount: 50
+    reward: 840.0
+
+  # 唤魔者类
+  kill_evoker:
+    name: "击杀唤魔者"
+    description: "击杀5只唤魔者"
+    type: "KILL"
+    material: "EVOKER"
+    amount: 5
+    reward: 360.0
+
+  kill_evoker_2:
+    name: "唤魔者猎人"
+    description: "击杀15只唤魔者"
+    type: "KILL"
+    material: "EVOKER"
+    amount: 15
+    reward: 700.0
+
+  kill_evoker_3:
+    name: "唤魔者屠夫"
+    description: "击杀30只唤魔者"
+    type: "KILL"
+    material: "EVOKER"
+    amount: 30
+    reward: 1200.0
+
+  # 掠夺者类
+  kill_pillager:
+    name: "击杀掠夺者"
+    description: "击杀20只掠夺者"
+    type: "KILL"
+    material: "PILLAGER"
+    amount: 20
+    reward: 180.0
+
+  kill_pillager_2:
+    name: "掠夺者猎人"
+    description: "击杀50只掠夺者"
+    type: "KILL"
+    material: "PILLAGER"
+    amount: 50
+    reward: 360.0
+
+  kill_pillager_3:
+    name: "掠夺者屠夫"
+    description: "击杀100只掠夺者"
+    type: "KILL"
+    material: "PILLAGER"
+    amount: 100
+    reward: 640.0
+
+  # 劫掠兽类
+  kill_ravager:
+    name: "击杀劫掠兽"
+    description: "击杀3只劫掠兽"
+    type: "KILL"
+    material: "RAVAGER"
+    amount: 3
+    reward: 500.0
+
+  kill_ravager_2:
+    name: "劫掠兽猎人"
+    description: "击杀10只劫掠兽"
+    type: "KILL"
+    material: "RAVAGER"
+    amount: 10
+    reward: 1000.0
+
+  kill_ravager_3:
+    name: "劫掠兽屠夫"
+    description: "击杀20只劫掠兽"
+    type: "KILL"
+    material: "RAVAGER"
+    amount: 20
+    reward: 1600.0
+
+  # 恶魂类
+  kill_ghast:
+    name: "击杀恶魂"
+    description: "击杀10只恶魂"
+    type: "KILL"
+    material: "GHAST"
+    amount: 10
+    reward: 240.0
+
+  kill_ghast_2:
+    name: "恶魂猎人"
+    description: "击杀25只恶魂"
+    type: "KILL"
+    material: "GHAST"
+    amount: 25
+    reward: 480.0
+
+  kill_ghast_3:
+    name: "恶魂屠夫"
+    description: "击杀50只恶魂"
+    type: "KILL"
+    material: "GHAST"
+    amount: 50
+    reward: 840.0
+
+  # 岩浆怪类
+  kill_magma_cube:
+    name: "击杀岩浆怪"
+    description: "击杀20只岩浆怪"
+    type: "KILL"
+    material: "MAGMA_CUBE"
+    amount: 20
+    reward: 160.0
+
+  kill_magma_cube_2:
+    name: "岩浆怪猎人"
+    description: "击杀50只岩浆怪"
+    type: "KILL"
+    material: "MAGMA_CUBE"
+    amount: 50
+    reward: 320.0
+
+  kill_magma_cube_3:
+    name: "岩浆怪屠夫"
+    description: "击杀100只岩浆怪"
+    type: "KILL"
+    material: "MAGMA_CUBE"
+    amount: 100
+    reward: 560.0
+
+  # 史莱姆类
+  kill_slime:
+    name: "击杀史莱姆"
+    description: "击杀30只史莱姆"
+    type: "KILL"
+    material: "SLIME"
+    amount: 30
+    reward: 120.0
+
+  kill_slime_2:
+    name: "史莱姆猎人"
+    description: "击杀80只史莱姆"
+    type: "KILL"
+    material: "SLIME"
+    amount: 80
+    reward: 240.0
+
+  kill_slime_3:
+    name: "史莱姆屠夫"
+    description: "击杀150只史莱姆"
+    type: "KILL"
+    material: "SLIME"
+    amount: 150
+    reward: 400.0
+
+  # 循声守卫类
+  kill_warden:
+    name: "击杀循声守卫"
+    description: "击杀1只循声守卫"
+    type: "KILL"
+    material: "WARDEN"
+    amount: 1
+    reward: 1000.0
+
+  kill_warden_2:
+    name: "循声守卫猎人"
+    description: "击杀3只循声守卫"
+    type: "KILL"
+    material: "WARDEN"
+    amount: 3
+    reward: 2400.0
+
+  # 末影龙类
+  kill_ender_dragon:
+    name: "击杀末影龙"
+    description: "击杀1只末影龙"
+    type: "KILL"
+    material: "ENDER_DRAGON"
+    amount: 1
+    reward: 1600.0
+
+  kill_ender_dragon_2:
+    name: "屠龙勇士"
+    description: "击杀3只末影龙"
+    type: "KILL"
+    material: "ENDER_DRAGON"
+    amount: 3
+    reward: 4000.0
+
+  # 凋灵类
+  kill_wither:
+    name: "击杀凋灵"
+    description: "击杀1只凋灵"
+    type: "KILL"
+    material: "WITHER"
+    amount: 1
+    reward: 2000.0
+
+  kill_wither_2:
+    name: "凋灵猎人"
+    description: "击杀3只凋灵"
+    type: "KILL"
+    material: "WITHER"
+    amount: 3
+    reward: 5000.0
+
+  # 守卫者类
+  kill_guardian:
+    name: "击杀守卫者"
+    description: "击杀15只守卫者"
+    type: "KILL"
+    material: "GUARDIAN"
+    amount: 15
+    reward: 200.0
+
+  kill_guardian_2:
+    name: "守卫者猎人"
+    description: "击杀40只守卫者"
+    type: "KILL"
+    material: "GUARDIAN"
+    amount: 40
+    reward: 400.0
+
+  kill_guardian_3:
+    name: "守卫者屠夫"
+    description: "击杀80只守卫者"
+    type: "KILL"
+    material: "GUARDIAN"
+    amount: 80
+    reward: 700.0
+
+  # 远古守卫者类
+  kill_elder_guardian:
+    name: "击杀远古守卫者"
+    description: "击杀3只远古守卫者"
+    type: "KILL"
+    material: "ELDER_GUARDIAN"
+    amount: 3
+    reward: 600.0
+
+  kill_elder_guardian_2:
+    name: "远古守卫者猎人"
+    description: "击杀8只远古守卫者"
+    type: "KILL"
+    material: "ELDER_GUARDIAN"
+    amount: 8
+    reward: 1200.0
+
+  # 幻翼类
+  kill_phantom:
+    name: "击杀幻翼"
+    description: "击杀20只幻翼"
+    type: "KILL"
+    material: "PHANTOM"
+    amount: 20
+    reward: 200.0
+
+  kill_phantom_2:
+    name: "幻翼猎人"
+    description: "击杀50只幻翼"
+    type: "KILL"
+    material: "PHANTOM"
+    amount: 50
+    reward: 400.0
+
+  kill_phantom_3:
+    name: "幻翼屠夫"
+    description: "击杀100只幻翼"
+    type: "KILL"
+    material: "PHANTOM"
+    amount: 100
+    reward: 700.0
+
+  # 潜影贝类
+  kill_shulker:
+    name: "击杀潜影贝"
+    description: "击杀15只潜影贝"
+    type: "KILL"
+    material: "SHULKER"
+    amount: 15
+    reward: 300.0
+
+  kill_shulker_2:
+    name: "潜影贝猎人"
+    description: "击杀40只潜影贝"
+    type: "KILL"
+    material: "SHULKER"
+    amount: 40
+    reward: 600.0
+
+  kill_shulker_3:
+    name: "潜影贝屠夫"
+    description: "击杀80只潜影贝"
+    type: "KILL"
+    material: "SHULKER"
+    amount: 80
+    reward: 1000.0
+
+  # 猪灵类
+  kill_piglin:
+    name: "击杀猪灵"
+    description: "击杀20只猪灵"
+    type: "KILL"
+    material: "PIGLIN"
+    amount: 20
+    reward: 160.0
+
+  kill_piglin_2:
+    name: "猪灵猎人"
+    description: "击杀50只猪灵"
+    type: "KILL"
+    material: "PIGLIN"
+    amount: 50
+    reward: 320.0
+
+  kill_piglin_3:
+    name: "猪灵屠夫"
+    description: "击杀100只猪灵"
+    type: "KILL"
+    material: "PIGLIN"
+    amount: 100
+    reward: 560.0
+
+  # 猪灵蛮兵类
+  kill_piglin_brute:
+    name: "击杀猪灵蛮兵"
+    description: "击杀10只猪灵蛮兵"
+    type: "KILL"
+    material: "PIGLIN_BRUTE"
+    amount: 10
+    reward: 300.0
+
+  kill_piglin_brute_2:
+    name: "猪灵蛮兵猎人"
+    description: "击杀25只猪灵蛮兵"
+    type: "KILL"
+    material: "PIGLIN_BRUTE"
+    amount: 25
+    reward: 600.0
+
+  kill_piglin_brute_3:
+    name: "猪灵蛮兵屠夫"
+    description: "击杀50只猪灵蛮兵"
+    type: "KILL"
+    material: "PIGLIN_BRUTE"
+    amount: 50
+    reward: 1100.0
+
+  # 嗅探兽类
+  kill_sniffer:
+    name: "击杀嗅探兽"
+    description: "击杀5只嗅探兽"
+    type: "KILL"
+    material: "SNIFFER"
+    amount: 5
+    reward: 400.0
+
+  # 骆驼类
+  kill_camel:
+    name: "击杀骆驼"
+    description: "击杀10只骆驼"
+    type: "KILL"
+    material: "CAMEL"
+    amount: 10
+    reward: 300.0
+
+  # 青蛙类
+  kill_frog:
+    name: "击杀青蛙"
+    description: "击杀20只青蛙"
+    type: "KILL"
+    material: "FROG"
+    amount: 20
+    reward: 160.0
+
+  # 蝌蚪类
+  kill_tadpole:
+    name: "击杀蝌蚪"
+    description: "击杀30只蝌蚪"
+    type: "KILL"
+    material: "TADPOLE"
+    amount: 30
+    reward: 100.0
+
+  # 悦灵类
+  kill_allay:
+    name: "击杀悦灵"
+    description: "击杀15只悦灵"
+    type: "KILL"
+    material: "ALLAY"
+    amount: 15
+    reward: 200.0
+
+  # 旋风人类
+  kill_breeze:
+    name: "击杀旋风人"
+    description: "击杀10只旋风人"
+    type: "KILL"
+    material: "BREEZE"
+    amount: 10
+    reward: 400.0
+
+  # ==================== 钓鱼任务 ====================
+  fish_cod:
+    name: "钓鳕鱼"
+    description: "钓上10条鳕鱼"
+    type: "FISH"
+    material: "COD"
+    amount: 10
+    reward: 160.0
+
+  fish_cod_2:
+    name: "鳕鱼钓手"
+    description: "钓上25条鳕鱼"
+    type: "FISH"
+    material: "COD"
+    amount: 25
+    reward: 300.0
+
+  fish_cod_3:
+    name: "鳕鱼大师"
+    description: "钓上50条鳕鱼"
+    type: "FISH"
+    material: "COD"
+    amount: 50
+    reward: 560.0
+
+  fish_salmon:
+    name: "钓鲑鱼"
+    description: "钓上10条鲑鱼"
+    type: "FISH"
+    material: "SALMON"
+    amount: 10
+    reward: 180.0
+
+  fish_salmon_2:
+    name: "鲑鱼钓手"
+    description: "钓上25条鲑鱼"
+    type: "FISH"
+    material: "SALMON"
+    amount: 25
+    reward: 340.0
+
+  fish_salmon_3:
+    name: "鲑鱼大师"
+    description: "钓上50条鲑鱼"
+    type: "FISH"
+    material: "SALMON"
+    amount: 50
+    reward: 600.0
+
+  fish_tropical:
+    name: "钓热带鱼"
+    description: "钓上8条热带鱼"
+    type: "FISH"
+    material: "TROPICAL_FISH"
+    amount: 8
+    reward: 240.0
+
+  fish_tropical_2:
+    name: "热带鱼钓手"
+    description: "钓上20条热带鱼"
+    type: "FISH"
+    material: "TROPICAL_FISH"
+    amount: 20
+    reward: 440.0
+
+  fish_tropical_3:
+    name: "热带鱼大师"
+    description: "钓上40条热带鱼"
+    type: "FISH"
+    material: "TROPICAL_FISH"
+    amount: 40
+    reward: 800.0
+
+  fish_pufferfish:
+    name: "钓河豚"
+    description: "钓上5条河豚"
+    type: "FISH"
+    material: "PUFFERFISH"
+    amount: 5
+    reward: 300.0
+
+  fish_pufferfish_2:
+    name: "河豚钓手"
+    description: "钓上15条河豚"
+    type: "FISH"
+    material: "PUFFERFISH"
+    amount: 15
+    reward: 560.0
+
+  fish_pufferfish_3:
+    name: "河豚大师"
+    description: "钓上30条河豚"
+    type: "FISH"
+    material: "PUFFERFISH"
+    amount: 30
+    reward: 1000.0
+
+  fish_treasure:
+    name: "钓鱼宝藏"
+    description: "钓上3个宝藏"
+    type: "FISH"
+    material: "NAME_TAG"
+    amount: 3
+    reward: 400.0
+
+  fish_treasure_2:
+    name: "宝藏猎人"
+    description: "钓上8个宝藏"
+    type: "FISH"
+    material: "NAME_TAG"
+    amount: 8
+    reward: 800.0
+
+  fish_treasure_3:
+    name: "宝藏大师"
+    description: "钓上15个宝藏"
+    type: "FISH"
+    material: "NAME_TAG"
+    amount: 15
+    reward: 1400.0
+
+  # ==================== 农业任务 ====================
+  # 小麦类
+  farm_wheat:
+    name: "收获小麦"
+    description: "收获32个小麦"
+    type: "FARM"
+    material: "WHEAT"
+    amount: 32
+    reward: 80.0
+
+  farm_wheat_2:
+    name: "小麦农夫"
+    description: "收获64个小麦"
+    type: "FARM"
+    material: "WHEAT"
+    amount: 64
+    reward: 140.0
+
+  farm_wheat_3:
+    name: "小麦大师"
+    description: "收获128个小麦"
+    type: "FARM"
+    material: "WHEAT"
+    amount: 128
+    reward: 240.0
+
+  # 胡萝卜类
+  farm_carrot:
+    name: "收获胡萝卜"
+    description: "收获32个胡萝卜"
+    type: "FARM"
+    material: "CARROT"
+    amount: 32
+    reward: 90.0
+
+  farm_carrot_2:
+    name: "胡萝卜农夫"
+    description: "收获64个胡萝卜"
+    type: "FARM"
+    material: "CARROT"
+    amount: 64
+    reward: 160.0
+
+  farm_carrot_3:
+    name: "胡萝卜大师"
+    description: "收获128个胡萝卜"
+    type: "FARM"
+    material: "CARROT"
+    amount: 128
+    reward: 280.0
+
+  # 马铃薯类
+  farm_potato:
+    name: "收获马铃薯"
+    description: "收获32个马铃薯"
+    type: "FARM"
+    material: "POTATO"
+    amount: 32
+    reward: 90.0
+
+  farm_potato_2:
+    name: "马铃薯农夫"
+    description: "收获64个马铃薯"
+    type: "FARM"
+    material: "POTATO"
+    amount: 64
+    reward: 160.0
+
+  farm_potato_3:
+    name: "马铃薯大师"
+    description: "收获128个马铃薯"
+    type: "FARM"
+    material: "POTATO"
+    amount: 128
+    reward: 280.0
+
+  # 甜菜根类
+  farm_beetroot:
+    name: "收获甜菜根"
+    description: "收获32个甜菜根"
+    type: "FARM"
+    material: "BEETROOT"
+    amount: 32
+    reward: 100.0
+
+  farm_beetroot_2:
+    name: "甜菜根农夫"
+    description: "收获64个甜菜根"
+    type: "FARM"
+    material: "BEETROOT"
+    amount: 64
+    reward: 180.0
+
+  farm_beetroot_3:
+    name: "甜菜根大师"
+    description: "收获128个甜菜根"
+    type: "FARM"
+    material: "BEETROOT"
+    amount: 128
+    reward: 320.0
+
+  # 甘蔗类
+  farm_sugar_cane:
+    name: "收获甘蔗"
+    description: "收获32个甘蔗"
+    type: "FARM"
+    material: "SUGAR_CANE"
+    amount: 32
+    reward: 80.0
+
+  farm_sugar_cane_2:
+    name: "甘蔗农夫"
+    description: "收获64个甘蔗"
+    type: "FARM"
+    material: "SUGAR_CANE"
+    amount: 64
+    reward: 140.0
+
+  farm_sugar_cane_3:
+    name: "甘蔗大师"
+    description: "收获128个甘蔗"
+    type: "FARM"
+    material: "SUGAR_CANE"
+    amount: 128
+    reward: 240.0
+
+  # 西瓜类
+  farm_melon:
+    name: "收获西瓜"
+    description: "收获16个西瓜"
+    type: "FARM"
+    material: "MELON"
+    amount: 16
+    reward: 120.0
+
+  farm_melon_2:
+    name: "西瓜农夫"
+    description: "收获32个西瓜"
+    type: "FARM"
+    material: "MELON"
+    amount: 32
+    reward: 200.0
+
+  farm_melon_3:
+    name: "西瓜大师"
+    description: "收获64个西瓜"
+    type: "FARM"
+    material: "MELON"
+    amount: 64
+    reward: 360.0
+
+  # 南瓜类
+  farm_pumpkin:
+    name: "收获南瓜"
+    description: "收获16个南瓜"
+    type: "FARM"
+    material: "PUMPKIN"
+    amount: 16
+    reward: 120.0
+
+  farm_pumpkin_2:
+    name: "南瓜农夫"
+    description: "收获32个南瓜"
+    type: "FARM"
+    material: "PUMPKIN"
+    amount: 32
+    reward: 200.0
+
+  farm_pumpkin_3:
+    name: "南瓜大师"
+    description: "收获64个南瓜"
+    type: "FARM"
+    material: "PUMPKIN"
+    amount: 64
+    reward: 360.0
+
+  # 仙人掌类
+  farm_cactus:
+    name: "收获仙人掌"
+    description: "收获32个仙人掌"
+    type: "FARM"
+    material: "CACTUS"
+    amount: 32
+    reward: 100.0
+
+  farm_cactus_2:
+    name: "仙人掌农夫"
+    description: "收获64个仙人掌"
+    type: "FARM"
+    material: "CACTUS"
+    amount: 64
+    reward: 180.0
+
+  farm_cactus_3:
+    name: "仙人掌大师"
+    description: "收获128个仙人掌"
+    type: "FARM"
+    material: "CACTUS"
+    amount: 128
+    reward: 320.0
+
+  # 竹子类
+  farm_bamboo:
+    name: "收获竹子"
+    description: "收获64个竹子"
+    type: "FARM"
+    material: "BAMBOO"
+    amount: 64
+    reward: 80.0
+
+  farm_bamboo_2:
+    name: "竹子农夫"
+    description: "收获128个竹子"
+    type: "FARM"
+    material: "BAMBOO"
+    amount: 128
+    reward: 140.0
+
+  farm_bamboo_3:
+    name: "竹子大师"
+    description: "收获256个竹子"
+    type: "FARM"
+    material: "BAMBOO"
+    amount: 256
+    reward: 240.0
+
+  # 海带类
+  farm_kelp:
+    name: "收获海带"
+    description: "收获32个海带"
+    type: "FARM"
+    material: "KELP"
+    amount: 32
+    reward: 100.0
+
+  farm_kelp_2:
+    name: "海带农夫"
+    description: "收获64个海带"
+    type: "FARM"
+    material: "KELP"
+    amount: 64
+    reward: 180.0
+
+  farm_kelp_3:
+    name: "海带大师"
+    description: "收获128个海带"
+    type: "FARM"
+    material: "KELP"
+    amount: 128
+    reward: 320.0
+
+  # 甜浆果类
+  farm_sweet_berries:
+    name: "收获甜浆果"
+    description: "收获32个甜浆果"
+    type: "FARM"
+    material: "SWEET_BERRIES"
+    amount: 32
+    reward: 100.0
+
+  farm_sweet_berries_2:
+    name: "甜浆果农夫"
+    description: "收获64个甜浆果"
+    type: "FARM"
+    material: "SWEET_BERRIES"
+    amount: 64
+    reward: 180.0
+
+  farm_sweet_berries_3:
+    name: "甜浆果大师"
+    description: "收获128个甜浆果"
+    type: "FARM"
+    material: "SWEET_BERRIES"
+    amount: 128
+    reward: 320.0
+
+  # ==================== 行走任务 ====================
+  walk_100:
+    name: "短途散步"
+    description: "行走100格距离"
+    type: "WALK"
+    material: "FEATHER"
+    amount: 100
+    reward: 40.0
+
+  walk_500:
+    name: "短途旅行"
+    description: "行走500格距离"
+    type: "WALK"
+    material: "FEATHER"
+    amount: 500
+    reward: 80.0
+
+  walk_1000:
+    name: "长途跋涉"
+    description: "行走1000格距离"
+    type: "WALK"
+    material: "FEATHER"
+    amount: 1000
+    reward: 120.0
+
+  walk_2000:
+    name: "远足者"
+    description: "行走2000格距离"
+    type: "WALK"
+    material: "FEATHER"
+    amount: 2000
+    reward: 200.0
+
+  walk_5000:
+    name: "探险家"
+    description: "行走5000格距离"
+    type: "WALK"
+    material: "FEATHER"
+    amount: 5000
+    reward: 400.0
+
+  walk_10000:
+    name: "环球旅行"
+    description: "行走10000格距离"
+    type: "WALK"
+    material: "FEATHER"
+    amount: 10000
+    reward: 700.0
+
+  walk_20000:
+    name: "马拉松选手"
+    description: "行走20000格距离"
+    type: "WALK"
+    material: "FEATHER"
+    amount: 20000
+    reward: 1200.0
+
+  walk_50000:
+    name: "传奇旅行家"
+    description: "行走50000格距离"
+    type: "WALK"
+    material: "FEATHER"
+    amount: 50000
+    reward: 2400.0

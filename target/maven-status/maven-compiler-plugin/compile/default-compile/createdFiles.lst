@@ -1,0 +1,12 @@
+com\xgxh\commands\TaskCommand$1.class
+com\xgxh\manager\VaultManager.class
+com\xgxh\models\PlayerTaskData.class
+com\xgxh\listeners\TaskListener$1.class
+com\xgxh\commands\TaskCommand.class
+com\xgxh\listeners\PlayerJoinListener.class
+com\xgxh\models\DailyTask.class
+com\xgxh\listeners\TaskListener.class
+com\xgxh\models\DailyTask$TaskType.class
+com\xgxh\XgxhPlugin.class
+com\xgxh\manager\TaskManager.class
+com\xgxh\listeners\InventoryClickListener.class
