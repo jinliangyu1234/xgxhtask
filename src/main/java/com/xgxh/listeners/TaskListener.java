@@ -9,10 +9,14 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.block.data.Ageable;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerFishEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.List;
@@ -68,6 +72,31 @@ public class TaskListener implements Listener {
                 farmMaterial,
                 1
             );
+        }
+    }
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+
+        Player player = event.getPlayer();
+        if (!isAllowedWorld(player)) return;
+
+        Block block = event.getClickedBlock();
+        if (block == null) return;
+
+        if (block.getType() == Material.SWEET_BERRY_BUSH) {
+            if (block.getBlockData() instanceof Ageable) {
+                Ageable ageable = (Ageable) block.getBlockData();
+                if (ageable.getAge() >= 2) {
+                    plugin.getTaskManager().updateTaskProgress(
+                        player.getUniqueId(),
+                        DailyTask.TaskType.FARM,
+                        Material.SWEET_BERRIES,
+                        1
+                    );
+                }
+            }
         }
     }
 
@@ -161,12 +190,18 @@ public class TaskListener implements Listener {
             Player player = event.getPlayer();
             if (!isAllowedWorld(player)) return;
 
-            plugin.getTaskManager().updateTaskProgress(
-                player.getUniqueId(),
-                DailyTask.TaskType.FISH,
-                Material.COD,
-                1
-            );
+            org.bukkit.entity.Entity caught = event.getCaught();
+            if (caught instanceof org.bukkit.entity.Item) {
+                ItemStack itemStack = ((org.bukkit.entity.Item) caught).getItemStack();
+                Material fishType = itemStack.getType();
+                
+                plugin.getTaskManager().updateTaskProgress(
+                    player.getUniqueId(),
+                    DailyTask.TaskType.FISH,
+                    fishType,
+                    1
+                );
+            }
         }
     }
 
